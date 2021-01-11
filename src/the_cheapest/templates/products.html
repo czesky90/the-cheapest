@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Products</title>
+{% endblock %}
+
+{% block body %}
+<h1>Products</h1>
+
+    <hr>
+    <h2>Add new product:</h2>
+    <form action='/products' method="POST">
+        Name: <input type="text" name="name" id="name">
+        <br>
+        Ean: <input type="number" name="ean", id="ean">
+        <br>
+        Price: <input type="number" name="price" id="price">
+        <br>
+        <input type="submit" value="Add">
+    </form>
+    <hr>
+
+
+    {% for product in products %}
+    <h2>{{ product.id }} {{ product.name }}</h2>
+    <h3>EAN: {{ product.ean }}</h3>
+    <p>Price: {{ product.price }}</p>
+
+    <a href="/products/delete/{{product.id}}">Delete</a>
+    <a href="/products/product_edit/{{product.id}}">Edit</a>
+    <hr>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Edit competitor</title>
+{% endblock %}
+
+{% block body %}
+<h1>Edit</h1>
+
+    <hr>
+    <h2>Competitor no. {{ competitor.id }}:</h2>
+    <form action='/competitors/competitor_edit/{{ competitor.id }}' method="POST">
+        Name: <input type="text" name="name" id="name" value="{{ competitor.name }}">
+        <br>
+        URL: <input type="text" name="url" id="url" value="{{ competitor.url }}">
+        <br>
+        <input type="submit" value="Save">
+    </form>
+    <hr>
+
+{% endblock %}
