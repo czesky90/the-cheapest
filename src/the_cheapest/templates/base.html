@@ -6,6 +6,34 @@
     {% block head %} {% endblock %}
 </head>
 <body>
+    <section class="hero is-primary is-fullheight">
+
+            <div class="hero-head">
+                <nav class="navbar">
+                    <div class="container">
+
+                        <div id="navbarMenuHeroA" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a href="{{ url_for('index') }}" class="navbar-item">
+                                    Home
+                                </a>
+                                <a href="{{ url_for('dashboard') }}" class="navbar-item">
+                                    Dashboard
+                                </a>
+                                <a href="{{ url_for('competitors') }}" class="navbar-item">
+                                    Competitors
+                                </a>
+                                <a href="{{ url_for('products') }}" class="navbar-item">
+                                    Products
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    </section>
+
+
     {% block body %} {% endblock %}
 </body>
 </html>

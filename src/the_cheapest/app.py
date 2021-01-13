@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -33,17 +33,6 @@ class CompetitorCreate(db.Model):
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('dashboard'))
-    return render_template('login.html', error=error)
 
 
 @app.route('/dashboard')
@@ -89,6 +78,7 @@ def product_edit(id):
     else:
         return render_template('product_edit.html', product=product)
 
+
 @app.route('/competitors', methods=['GET', 'POST'])
 def competitors():
 
@@ -103,6 +93,7 @@ def competitors():
     else:
         all_competitors = CompetitorCreate.query.order_by(CompetitorCreate.id).all()
         return render_template('competitors.html', competitors=all_competitors)
+
 
 @app.route('/competitors/delete/<int:id>')
 def competitor_delete(id):
