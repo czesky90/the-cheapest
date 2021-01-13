@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block head %}
+<title>Competitors</title>
+{% endblock %}
+
+{% block body %}
+<h1>Competitors</h1>
+
+    <hr>
+    <h2>Add new competitor:</h2>
+    <form action='/competitors' method="POST">
+        Name: <input type="text" name="name" id="name">
+        <br>
+        Url: <input type="text" name="url", id="url">
+        <br>
+        <input type="submit" value="Add">
+    </form>
+    <hr>
+
+
+    {% for competitor in competitors %}
+    <h2>{{ competitor.id }} {{ competitor.name }}</h2>
+    <h3>url: {{ competitor.url }}</h3>
+
+    <a href="/competitors/delete/{{competitor.id}}">Delete</a>
+    <a href="/competitors/competitor_edit/{{competitor.id}}">Edit</a>
+    <hr>
+    {% endfor %}
+
+{% endblock %}
